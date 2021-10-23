@@ -15,6 +15,16 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard', 'SolicitacaoController@index')->name('dashboard');
+    Route::get('/solicitacao/{id}', 'SolicitacaoController@find');
+
+    Route::get('/solicitacao', 'SolicitacaoController@create');
+    Route::post('/solicitacao', 'SolicitacaoController@store');
+
+    Route::get('/solicitacao/edit/{id}', 'SolicitacaoController@edit');
+    Route::put('/solicitacao/update', 'SolicitacaoController@update');
+
+    Route::get('/solicitacao/delete/{id}', 'SolicitacaoController@delete');
+    Route::delete('/solicitacao/delete', 'SolicitacaoController@destroy');
 });
 
 Route::get('/', function () { return view('welcome');});
