@@ -29,7 +29,7 @@ class CreateSolicitacoesTable extends Migration
             $table->dateTime('data_procedimento')->nullable();
             $table->string('senha_procedimento', 255)->nullable();
             $table->string('local_procedimento', 255)->nullable();
-            $table->enum('status', ['Solicitação enviada', 'Trocar cartão SUS', 'Agendar procedimento', 'Procedimento agendado', 'Pendência documental', 'Pendência Cartão SUS novo'])->default('Solicitação enviada');
+            $table->enum('status', ['Solicitação cadastrada', 'Trocar cartão SUS', 'Liberar para agendamento','Agendar procedimento', 'Procedimento agendado', 'Pendência documental', 'Pendência Cartão SUS novo'])->default('Solicitação cadastrada');
             $table->enum('procedimento', ['Catarata', 'Pterígio', 'Glaucoma', 'Retina', 'Outros'])->default('Outros');
             $table->boolean('deleted')->default(false);
             $table->dateTime('deleted_at')->nullable();
