@@ -28,6 +28,15 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('/solicitacao/document/delete/{id_doc}', 'DocumentController@delete');
     Route::delete('/solicitacao/document/delete', 'DocumentController@destroy');
+
+    Route::get('/usuarios', 'UserController@index');
+    Route::post('/usuarios', 'UserController@store');
+
+    Route::get('/usuarios/edit/{id}', 'UserController@edit');
+    Route::put('/usuarios/update', 'UserController@update');
+
+    Route::get('/usuarios/delete/{id}', 'UserController@delete');
+    Route::delete('/usuarios/delete', 'UserController@destroy');
 });
 
 Route::get('/', function () { return view('welcome');});

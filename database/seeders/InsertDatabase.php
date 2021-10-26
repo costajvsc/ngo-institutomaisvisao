@@ -21,7 +21,7 @@ class InsertDatabase extends Seeder
             'name' => 'Teste IMV',
             'email' => 'teste@imv.com.br',
             'password' => Hash::make('123123'),
-            'user_type' => 'admin',
+            'user_type' => 'Administração',
         ]);
         DB::table('users')->insert([
             'name' => 'Secretaria Municipal',

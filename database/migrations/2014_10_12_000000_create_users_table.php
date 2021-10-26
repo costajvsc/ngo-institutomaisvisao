@@ -19,7 +19,9 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->enum('user_type', ['Secretaria Municipal', 'Setor de documentos', 'Central de agendamento', 'admin']);
+            $table->enum('user_type', ['Secretaria Municipal', 'Setor de documentos', 'Central de agendamento', 'Administração']);
+            $table->boolean('deleted')->default(false);
+            $table->dateTime('deleted_at')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });
