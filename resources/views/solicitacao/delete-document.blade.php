@@ -7,7 +7,7 @@
     <h3> Excluir documento #{{$document->id_doc}}</h3>
 </div>
 <h5>Tem certeza que deseja excluir esse documennto? Todos os dados <span class="text-danger">serão perdidos</span>.</h5>
-<p><span class="fw-bold">Nome do paciente</span> {{$document->file_name}}</p>
+<p><span class="fw-bold">Nome do arquivo</span> {{$document->file_name}}</p>
 
 <form action="/solicitacao/document/delete" method="POST">
     @csrf

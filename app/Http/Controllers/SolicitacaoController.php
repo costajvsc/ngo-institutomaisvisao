@@ -123,8 +123,5 @@ class SolicitacaoController extends Controller
             return redirect('/dashboard')->withErrors('Um erro ocorreu ao excluir a solicitação do paciente'.$solicitacao['nome_paciente'].'.');
 
         return redirect('/dashboard')->with('warning', 'A solicitação do paciente '.$solicitacao['nome_paciente'].' foi excluida com sucesso.');
-
-
-        return redirect('/dashboard');
     }
 }
