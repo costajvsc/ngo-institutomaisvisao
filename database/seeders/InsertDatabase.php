@@ -43,7 +43,7 @@ class InsertDatabase extends Seeder
         ]);
 
         $procedimentos = ['Catarata', 'Pterígio', 'Glaucoma', 'Retina', 'Outros'];
-        $status = ['Solicitação enviada', 'Trocar cartão SUS', 'Agendar procedimento', 'Procedimento agendado', 'Pendência documental', 'Pendência Cartão SUS novo'];
+        $status = ['Solicitação cadastrada', 'Trocar cartão SUS', 'Liberar para agendamento','Agendar procedimento', 'Procedimento agendado', 'Pendência documental', 'Pendência Cartão SUS novo'];
 
 
         foreach ($procedimentos as $p) {
