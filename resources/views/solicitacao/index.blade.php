@@ -1,6 +1,9 @@
 @extends('../layout/_layout')
 @section('title') Solicitação @endsection
 
+<link rel="stylesheet" href="{{asset('css/progressbar.css')}}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.css">
+
 
 @section('content')
 <div class="d-flex justify-content-between mt-2">
@@ -9,6 +12,13 @@
         <span class="badge rounded-pill bg-secondary p-2">{{$solicitacao->status}}</span>
     </div>
 </div>
+<ul id="progressbar" class="text-center my-4">
+    <li class="active" id="criada"><strong>Solicitação cadastrada</strong></li>
+    <li id="trocar-cartao" class="{{($solicitacao->status != 'Solicitação cadastrada') ? 'active' : ''}}"><strong>Trocar do cartão SUS</strong></li>
+    <li id="agendar-procedimento" class="{{in_array($solicitacao->status, ['Agendar procedimento', 'Procedimento agendado', 'Liberar para agendamento']) ? 'active' : ''}}"><strong>Agendar procedimento</strong></li>
+    <li id="agendado" class="{{($solicitacao->status == 'Procedimento agendado') ? 'active' : ''}}"><strong>Procedimento agendado</strong></li>
+</ul>
+<br>
 <h3>Dados do paciente</h3>
 
 <div class="d-flex justify-content-end mb-2 mt-2">
