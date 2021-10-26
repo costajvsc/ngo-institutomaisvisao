@@ -29,9 +29,9 @@
     @method('DELETE')
     <input type="hidden" name="id" value="{{$solicitacao->id}}">
     <div class="d-flex justify-content-end">
-        <a href="/dashboard" class="btn btn-outline-primary"><i class="fas fa-list"></i> Todos os procedimentos</a>
-        <a href="/solicitacao/{{$solicitacao->id}}" class="btn btn-outline-warning"><i class="fas fa-file-medical"></i> Voltar para registro</a>
-        <button type="submit" class="btn btn-outline-danger"><i class="fas fa-trash-alt"></i> Excluir registro</button>
+        <a href="/dashboard" class="btn btn-outline-secondary ms-2"><i class="fas fa-list"></i> Todos os procedimentos</a>
+        <a href="/solicitacao/{{$solicitacao->id}}" class="btn btn-outline-warning ms-2"><i class="fas fa-file-medical"></i> Voltar para registro</a>
+        <button type="submit" class="btn btn-outline-danger ms-2"><i class="fas fa-trash-alt"></i> Excluir registro</button>
     </div>
 </form>
 

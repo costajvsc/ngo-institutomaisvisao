@@ -25,6 +25,9 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('/solicitacao/delete/{id}', 'SolicitacaoController@delete');
     Route::delete('/solicitacao/delete', 'SolicitacaoController@destroy');
+
+    Route::get('/solicitacao/document/delete/{id_doc}', 'DocumentController@delete');
+    Route::delete('/solicitacao/document/delete', 'DocumentController@destroy');
 });
 
 Route::get('/', function () { return view('welcome');});

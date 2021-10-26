@@ -11,7 +11,7 @@
 </div>
 <h3>Dados do paciente</h3>
 
-<form action="/solicitacao/update" method="POST">
+<form action="/solicitacao/update" method="POST" enctype="multipart/form-data">
     @csrf
     @method('PUT')
     <input type="hidden" name="id" value="{{$solicitacao->id}}">
@@ -94,12 +94,18 @@
             <input type="text" class="form-control" id="senha_procedimento" name="senha_procedimento" placeholder="0234592" value="{{$solicitacao->senha_procedimento}}" required>
         </div>
     </div>
+
+    <h5>Documentos</h5>
+    <div class="form-group">
+        <label for="documents">Fotos do produto</label>
+        <input type="file" name="documents[]" id="documents" accept="" multiple>
+    </div>
+
     <div class="d-flex justify-content-end mb-2 mt-2">
-        <a href="/dashboard" class="btn btn-outline-primary"><i class="fas fa-list"></i> Todos os procedimentos</a>
-        <a href="/solicitacao/{{$solicitacao->id}}" class="btn btn-outline-warning"><i class="fas fa-file-medical"></i> Voltar para registro</a>
-        <button type="submit" class="btn btn-outline-danger"><i class="fas fa-save"></i> Salvar dados</button>
+        <a href="/dashboard" class="btn btn-outline-secondary"><i class="fas fa-list ms-2"></i> Todos os procedimentos</a>
+        <a href="/solicitacao/{{$solicitacao->id}}" class="btn btn-outline-warning ms-2"><i class="fas fa-file-medical"></i> Voltar para registro</a>
+        <button type="submit" class="btn btn-outline-success ms-2"><i class="fas fa-save"></i> Salvar dados</button>
     </div>
 </form>
 
-<h5>Documentos</h5>
 @endsection

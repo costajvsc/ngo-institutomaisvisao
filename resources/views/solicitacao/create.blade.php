@@ -7,7 +7,7 @@
     <h3>Criar nova solicitação</h3>
 </div>
 <h3>Dados do paciente</h3>
-<form action="/solicitacao" method="POST">
+<form action="/solicitacao" method="POST" enctype="multipart/form-data">
     @csrf
     <div class="row">
         <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
@@ -88,11 +88,18 @@
             <input type="text" class="form-control" id="senha_procedimento" name="senha_procedimento" placeholder="0234592">
         </div>
     </div>
+
+    <h5>Documentos</h5>
+    <div class="form-group">
+        <label for="documents">Fotos do produto</label>
+        <input type="file" name="documents[]" id="documents" accept="" multiple>
+    </div>
+
     <div class="d-flex justify-content-end mb-2 mt-2">
-        <a href="/dashboard" class="btn btn-outline-primary"><i class="fas fa-list"></i> Todos os procedimentos</a>
-        <button type="submit" class="btn btn-outline-danger"><i class="fas fa-save"></i> Criar solicitação</button>
+        <a href="/dashboard" class="btn btn-outline-secondary ms-2"><i class="fas fa-list"></i> Todos os procedimentos</a>
+        <button type="submit" class="btn btn-outline-success ms-2"><i class="fas fa-save"></i> Criar solicitação</button>
     </div>
 </form>
 
-<h5>Documentos</h5>
+
 @endsection

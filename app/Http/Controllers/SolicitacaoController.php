@@ -4,6 +4,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Solicitacao;
+use App\Models\DocumentoSolicitacao;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -25,22 +26,41 @@ class SolicitacaoController extends Controller
 
     public function store(Request $request)
     {
+        $user_id = Auth::user()->id;
         $data = $request->except(['_token', '_method']);
-        $data['id_user'] =  Auth::user()->id;
+        $data['id_user'] = $user_id;
 
-        if(!Solicitacao::create($data))
+        $created = Solicitacao::create($data);
+
+        if(!$created)
             return redirect('/dashboard')->withErrors('Um erro ocorreu ao criar a solicitação do paciente'.$data['nome_paciente'].'.');
 
-        return redirect('/dashboard')->with('warning', 'A solicitação do paciente '.$data['nome_paciente'].' foi criada com sucesso.');
+        if($request->hasfile('documents'))
+        {
+            foreach($request->file('documents') as $file)
+            {
+                $fileName = $file->store('/documents');
+                DocumentoSolicitacao::create([
+                    "file_path" => $fileName,
+                    "file_name" => $file->getClientOriginalName(),
+                    "id_solicitacao" => $created->id,
+                    "id_usuario" => $user_id
+                ]);
+            }
+        }
+
+        return redirect('/dashboard')->with('success', 'A solicitação do paciente '.$data['nome_paciente'].' foi criada com sucesso.');
     }
 
     public function find(Request $request)
     {
         $id = $request['id'];
         $solicitacao = Solicitacao::where('id', $id)->first();
+        $documents = DocumentoSolicitacao::where('id_solicitacao', $id)->get();
 
         return view('solicitacao/index', [
-            'solicitacao' => $solicitacao
+            'solicitacao' => $solicitacao,
+            'documents' => $documents
         ]);
     }
 
@@ -56,10 +76,26 @@ class SolicitacaoController extends Controller
 
     public function update(Request $request)
     {
-        $data = $request->except(['_token', '_method']);
+        $data = $request->except(['_token', '_method', 'documents']);
 
-        if(!Solicitacao::where('id', $request->id)->update($data))
+        $updated = Solicitacao::where('id', $request->id)->update($data);
+
+        if(!$updated)
             return redirect('/dashboard')->withErrors('Um erro ocorreu ao atualizada a solicitação do paciente'.$data['nome_paciente'].'.');
+
+        if($request->hasfile('documents'))
+        {
+            foreach($request->file('documents') as $file)
+            {
+                $fileName = $file->store('/documents');
+                DocumentoSolicitacao::create([
+                    "file_path" => $fileName,
+                    "file_name" => $file->getClientOriginalName(),
+                    "id_solicitacao" => $data['id'],
+                    "id_usuario" => Auth::user()->id
+                ]);
+            }
+        }
 
         return redirect('/dashboard')->with('warning', 'A solicitação do paciente '.$data['nome_paciente'].' foi atualizada com sucesso.');
 

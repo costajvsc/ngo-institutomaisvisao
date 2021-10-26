@@ -11,6 +11,12 @@
 </div>
 <h3>Dados do paciente</h3>
 
+<div class="d-flex justify-content-end mb-2 mt-2">
+    <a href="/dashboard" class="btn btn-outline-secondary ms-2"><i class="fas fa-list"></i> Todos os procedimentos</a>
+    <a href="/solicitacao/edit/{{$solicitacao->id}}" class="btn btn-outline-warning ms-2"><i class="fas fa-edit"></i> Alterar dados</a>
+    <a href="/solicitacao/delete/{{$solicitacao->id}}" class="btn btn-outline-danger ms-2"><i class="fas fa-trash-alt"></i> Excluir registro</a>
+</div>
+
 <form>
     <div class="row">
         <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
@@ -53,13 +59,8 @@
         </div>
     </div>
 </form>
-<div class="d-flex justify-content-end mb-2 mt-2">
-    <a href="/dashboard" class="btn btn-outline-primary"><i class="fas fa-list"></i> Todos os procedimentos</a>
-    <a href="/solicitacao/edit/{{$solicitacao->id}}" class="btn btn-outline-warning"><i class="fas fa-edit"></i> Alterar dados</a>
-    <a href="/solicitacao/delete/{{$solicitacao->id}}" class="btn btn-outline-danger"><i class="fas fa-trash-alt"></i> Excluir registro</a>
-</div>
-<h3>Dados do procedimento</h3>
 
+<h3>Dados do procedimento</h3>
 <form>
     <div class="row">
         <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 mb-2">
@@ -100,5 +101,21 @@
     </div>
 </form>
 
-<h5>Documentos</h5>
+
+    <h5>Documentos</h5>
+    <ul class="list-group">
+        @foreach ($documents as $doc)
+        <a href="{{asset('storage/'.$doc->file_path)}}">
+            <li class="list-group-item d-flex justify-content-between align-items-start">
+                <div class="ms-2 me-auto">
+                <div class="fw-bold">{{$doc->file_name}}</div>
+                </div>
+                <a href="/solicitacao/document/delete/{{$doc->id_doc}}">
+                    <span class="badge bg-primary rounded-pill">Excluir</span>
+                </a>
+            </li>
+        </a>
+        @endforeach
+    </ul>
+
 @endsection
