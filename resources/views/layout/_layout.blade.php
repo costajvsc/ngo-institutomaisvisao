@@ -13,8 +13,14 @@
     </style>
 
 </head>
+<header>
+    @include('layout.navbar')
+</header>
 <body>
-    <main class="container">@yield('content')</main>
+    <main class="container">
+        @include('layout.messages')
+        @yield('content')
+    </main>
 </body>
 <script src="{{asset('js/bootstrap.js')}}"></script>
 @yield('scripts')

@@ -3,7 +3,6 @@
 
 
 @section('content')
-    @include('layout.messages')
         <h1>Solicitações</h1>
         <div class="row mt-2 mb-2">
             @foreach($solicitacoes as $s)
