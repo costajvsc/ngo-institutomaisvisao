@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware(['auth'])->group(function () {
+Route::middleware(['auth', 'isAdmin', 'isSecMunicipal', 'isSetorDoc', 'isCentralAgendamento'])->group(function () {
     Route::get('/dashboard', 'SolicitacaoController@index')->name('dashboard');
     Route::get('/solicitacao/{id}', 'SolicitacaoController@find');
 
