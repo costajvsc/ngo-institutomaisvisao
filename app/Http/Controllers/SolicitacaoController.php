@@ -10,12 +10,32 @@ use Illuminate\Support\Facades\Auth;
 
 class SolicitacaoController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $solicitacoes = Solicitacao::where('deleted', 0)->paginate(15);
+        if(!is_null($request->status))
+            return view('dashboard', [
+                'solicitacoes' => Solicitacao::where([
+                    ['deleted', '=', false],
+                    ['urgencia', '=', false],
+                    ['status', '=', $request->status]
+                ])->paginate(15),
+                'urgencias' => Solicitacao::where([
+                    ['deleted', '=', false],
+                    ['urgencia', '=', true],
+                    ['status', '=', $request->status]
+                ])->get()
+            ]);
+
 
         return view('dashboard', [
-            'solicitacoes' => $solicitacoes
+            'solicitacoes' => Solicitacao::where([
+                ['deleted', '=',false],
+                ['urgencia', '=', false],
+            ])->paginate(15),
+            'urgencias' => Solicitacao::where([
+                ['deleted', '=', false],
+                ['urgencia', '=', true],
+            ])->get()
         ]);
     }
 
@@ -55,7 +75,17 @@ class SolicitacaoController extends Controller
     public function find(Request $request)
     {
         $id = $request['id'];
-        $solicitacao = Solicitacao::where('id', $id)->first();
+        $solicitacao = null;
+
+        if(!is_null($request->status)){
+            $solicitacao = Solicitacao::where([
+                ['id', '=' ,$request->id],
+                ['status', '=', $request->status]
+            ])->first();
+        }
+        else
+            $solicitacao = Solicitacao::where('id', '=' ,$request->id)->first();
+
         $documents = DocumentoSolicitacao::where('id_solicitacao', $id)->get();
 
         return view('solicitacao/index', [
