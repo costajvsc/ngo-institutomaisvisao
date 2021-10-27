@@ -27,11 +27,11 @@
 
         <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 mb-2">
             <label for="telefone_fixo">Telefone fixo</label>
-            <input type="text" class="form-control" id="telefone_fixo" name="telefone_fixo" placeholder="José Silva" value="{{"(".substr($solicitacao->telefone_fixo,0,2).") ".substr($solicitacao->telefone_fixo,2,-4)."-".substr($solicitacao->telefone_fixo,-4)}}" required>
+            <input type="text" class="form-control" id="telefone_fixo" name="telefone_fixo" placeholder="José Silva" value="{{$solicitacao->telefone_fixo}}" required>
         </div>
         <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 mb-2">
             <label for="telefone_celular">Telefone celular</label>
-            <input type="text" class="form-control" id="telefone_celular" name="telefone_celular" placeholder="José Silva" value="{{"(".substr($solicitacao->telefone_celular,0,2).") ".substr($solicitacao->telefone_celular,2,-4)."-".substr($solicitacao->telefone_celular,-4)}}" required>
+            <input type="text" class="form-control" id="telefone_celular" name="telefone_celular" placeholder="José Silva" value="{{$solicitacao->telefone_celular}}" required>
         </div>
         <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 mb-2">
             <label for="endereco">Endereço</label>
