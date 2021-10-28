@@ -17,8 +17,10 @@ class IsCentralAgendamento
      */
     public function handle(Request $request, Closure $next)
     {
-        if(Auth::user()->user_type == 'Central de agendamento')
+        if(Auth::user()->user_type == 'Central de agendamento'){
             $request->status = 'Agendar procedimento';
+            $request->next_step = 'Procedimento agendado';
+        }
 
         return $next($request);
     }

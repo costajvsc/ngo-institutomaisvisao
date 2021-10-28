@@ -27,6 +27,7 @@ class Solicitacao extends Model
         'local_procedimento',
         'status',
         'procedimento',
-        'id_user'
+        'resp_sec_municipal',
+        'responsavel'
     ];
 }

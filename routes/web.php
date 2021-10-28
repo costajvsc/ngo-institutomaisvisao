@@ -37,10 +37,16 @@ Route::middleware(['auth', 'isAdmin', 'isSecMunicipal', 'isSetorDoc', 'isCentral
 
     Route::get('/usuarios/delete/{id}', 'UserController@delete');
     Route::delete('/usuarios/delete', 'UserController@destroy');
+
+    Route::get('solicitacao/liberar/{etapa}', 'SolicitacaoController@release');
+    Route::post('solicitacao/liberar/update', 'SolicitacaoController@release_update');
 });
+
 
 Route::get('/', function () { return view('welcome');});
 
 Route::get('/login', 'UserController@login')->name('login');
 Route::get('/logout', 'UserController@logout');
 Route::post('/login', 'UserController@authenticate');
+
+Route::permanentRedirect('/', '/login');

@@ -17,8 +17,10 @@ class IsSetorDoc
      */
     public function handle(Request $request, Closure $next)
     {
-        if(Auth::user()->user_type == 'Setor de documentos')
+        if(Auth::user()->user_type == 'Setor de documentos'){
             $request->status = 'Trocar cartão SUS';
+            $request->next_step = 'Liberar para agendamento';
+        }
 
         return $next($request);
     }
