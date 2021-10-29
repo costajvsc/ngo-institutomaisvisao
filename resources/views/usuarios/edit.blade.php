@@ -9,13 +9,13 @@
         @method('PUT')
         <input type="hidden" name="id" value="{{$usuario->id}}">
         <label for="name">Nome do Usuário</label>
-        <input type="text" class="form-control mb-4" id="name" name="name" value="{{$usuario->name}}"  required>
+        <input type="text" class="form-control mb-4" id="name" name="name" value="{{$usuario->name}}" minlength="3" maxlength="255"  required>
 
         <label for="email">Email do Usuário</label>
-        <input type="email" class="form-control mb-4" id="email" name="email" value="{{$usuario->email}}"" required>
+        <input type="email" class="form-control mb-4" id="email" name="email" value="{{$usuario->email}}" minlength="3" maxlength="255" required>
 
         <label for="password">Senha do Usuário</label>
-        <input type="password" class="form-control mb-4" id="password" name="password" required>
+        <input type="password" class="form-control mb-4" id="password" name="password" minlength="3" maxlength="255" required>
 
         <label for="user_type">Tipo de usuário</label>
         <select class="form-control mb-4" id="user_type" name="user_type" required>

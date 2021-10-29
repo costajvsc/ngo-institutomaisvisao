@@ -56,13 +56,13 @@
                     @csrf
                     <div class="modal-body">
                         <label for="name">Nome do Usuário</label>
-                        <input type="text" class="form-control mb-4" id="name" name="name" placeholder="José Silva (Central Documentos)" required>
+                        <input type="text" class="form-control mb-4" id="name" name="name" placeholder="José Silva (Central Documentos)" minlength="3" maxlength="255" required>
 
                         <label for="email">Email do Usuário</label>
-                        <input type="email" class="form-control mb-4" id="email" name="email" placeholder="jose.silva_cetdoc@imv.ogr.br" required>
+                        <input type="email" class="form-control mb-4" id="email" name="email" placeholder="jose.silva_cetdoc@imv.ogr.br" minlength="3" maxlength="255" required>
 
                         <label for="password">Senha do Usuário</label>
-                        <input type="password" class="form-control mb-4" id="password" name="password" placeholder="••••••••" required>
+                        <input type="password" class="form-control mb-4" id="password" name="password" placeholder="••••••••" minlength="3" maxlength="255" required>
 
                         <label for="user_type">Tipo de usuário</label>
                         <select class="form-control mb-4" id="user_type" name="user_type" required>
