@@ -17,6 +17,8 @@ Route::middleware(['auth', 'isAdmin', 'isSecMunicipal', 'isSetorDoc', 'isCentral
     Route::get('/dashboard', 'SolicitacaoController@index')->name('dashboard');
     Route::get('/solicitacao/{id}', 'SolicitacaoController@find');
 
+    Route::post('/search', 'SolicitacaoController@search');
+
     Route::get('/solicitacao', 'SolicitacaoController@create');
     Route::post('/solicitacao', 'SolicitacaoController@store');
 

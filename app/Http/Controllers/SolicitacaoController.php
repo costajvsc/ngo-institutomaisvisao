@@ -105,6 +105,17 @@ class SolicitacaoController extends Controller
         ]);
     }
 
+    public function search(Request $request)
+    {
+        $search = Solicitacao::orWhere('id', $request->params)
+                                ->orWhere('nome_paciente', 'like', '%'.$request->params.'%')
+                                ->orWhere('sobrenome_paciente', 'like', '%'.$request->params.'%')->paginate(15);
+
+        return view('dashboard', [
+            'solicitacoes' => $search
+        ]);
+    }
+
     public function edit(Request $request)
     {
         $id = $request['id'];
