@@ -9,7 +9,7 @@
     <link rel="shortcut icon" href="{{asset('img/ico.png')}}" type="image/x-icon">
     <script src="https://kit.fontawesome.com/d5e0d5b45e.js" crossorigin="anonymous"></script>
     <style>
-        @yield('styles');
+        @yield('styles')
     </style>
 
 </head>
@@ -17,11 +17,12 @@
     @include('layout.navbar')
 </header>
 <body>
-    <main class="container">
+    <main class="container vh-100">
         @include('layout.messages')
         @yield('content')
     </main>
 </body>
+@include('layout.footer')
 <script src="{{asset('js/bootstrap.js')}}"></script>
 @yield('scripts')
 </html>

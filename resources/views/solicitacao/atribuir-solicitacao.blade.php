@@ -3,6 +3,7 @@
 
 
 @section('content')
+    @if(!empty($solicitacoes))
     <h1>Atribuir solicitação</h1>
     <form action="/solicitacao/liberar/update" method="POST">
         @csrf
@@ -52,5 +53,10 @@
             </tbody>
         </table>
     </form>
+    @else
+    <div class="alert alert-warning">
+        Nenhuma solicitação a ser liberada no momento
+    </div>
+    @endif
 
 @endsection
