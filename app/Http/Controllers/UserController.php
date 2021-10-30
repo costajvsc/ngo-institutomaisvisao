@@ -86,6 +86,7 @@ class UserController extends Controller
     public function update(Request $request)
     {
         $data = $request->except(['_token', '_method']);
+        $data['password'] = Hash::make($data['password']);
 
         if(!User::where('id', $data['id'])->update($data))
             return redirect('/usuarios')->withErrors('Um erro ocorreu ao atualizada o usuario '.$data['name'].'.');
