@@ -83,15 +83,15 @@
 
         <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 mb-2">
         <label for="data_procedimento">Data do procedimento</label>
-            <input type="text" class="form-control" id="data_procedimento" name="data_procedimento" placeholder="Data do procedimento" value="{{$solicitacao->data_procediemnto}}" {{((Auth::user()->user_type == 'Setor de documentos') || (Auth::user()->user_type == 'Administração')) ? 'required' : 'disabled' }}>
+            <input type="text" class="form-control" id="data_procedimento" name="data_procedimento" placeholder="Data do procedimento" value="{{$solicitacao->data_procediemnto}}" {{((Auth::user()->user_type == 'Central de agendamento') || (Auth::user()->user_type == 'Administração')) ? 'required' : 'disabled' }}>
         </div>
         <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 mb-2">
             <label for="local_procedimento">Local do procedimento</label>
-            <input type="text" class="form-control" id="local_procedimento" name="local_procedimento" placeholder="Centro Cirúrgico Carlos Chargas" minlength="3" maxlength="255" value="{{$solicitacao->local_procedimento}}" {{((Auth::user()->user_type == 'Setor de documentos') || (Auth::user()->user_type == 'Administração')) ? 'required' : 'disabled' }}>
+            <input type="text" class="form-control" id="local_procedimento" name="local_procedimento" placeholder="Centro Cirúrgico Carlos Chargas" minlength="3" maxlength="255" value="{{$solicitacao->local_procedimento}}" {{((Auth::user()->user_type == 'Central de agendamento') || (Auth::user()->user_type == 'Administração')) ? 'required' : 'disabled' }}>
         </div>
         <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 mb-2">
             <label for="senha_procedimento">Senha do procedimento</label>
-            <input type="text" class="form-control" id="senha_procedimento" name="senha_procedimento" placeholder="0234592" minlength="3" maxlength="255" value="{{$solicitacao->senha_procedimento}}" {{((Auth::user()->user_type == 'Setor de documentos') || (Auth::user()->user_type == 'Administração')) ? 'required' : 'disabled' }}>
+            <input type="text" class="form-control" id="senha_procedimento" name="senha_procedimento" placeholder="0234592" minlength="3" maxlength="255" value="{{$solicitacao->senha_procedimento}}" {{((Auth::user()->user_type == 'Central de agendamento') || (Auth::user()->user_type == 'Administração')) ? 'required' : 'disabled' }}>
         </div>
 
         <h5>Documentos</h5>

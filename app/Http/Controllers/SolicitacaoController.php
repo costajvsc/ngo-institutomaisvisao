@@ -135,7 +135,7 @@ class SolicitacaoController extends Controller
         $updated = Solicitacao::where('id', $request->id)->update($data);
 
         if(!$updated)
-            return redirect('/dashboard')->withErrors('Um erro ocorreu ao atualizada a solicitação do paciente'.$data['nome_paciente'].'.');
+            return redirect('/dashboard')->withErrors('Um erro ocorreu ao atualizada a solicitação do paciente.');
 
         if($request->hasfile('documents'))
         {
@@ -151,7 +151,7 @@ class SolicitacaoController extends Controller
             }
         }
 
-        return redirect('/dashboard')->with('warning', 'A solicitação do paciente '.$data['nome_paciente'].' foi atualizada com sucesso.');
+        return redirect('/dashboard')->with('warning', 'A solicitação do paciente foi atualizada com sucesso.');
     }
 
     public function delete(Request $request)
